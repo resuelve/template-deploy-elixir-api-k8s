@@ -1,5 +1,5 @@
 {
-  "project_name": "template-elixir-api",
+  "project_name": "example-api",
   "kubernetes_namespace": "sandbox",
   "kubernetes_port": "4000",
   "kubernetes_nodepool": "sandbox-rtd"

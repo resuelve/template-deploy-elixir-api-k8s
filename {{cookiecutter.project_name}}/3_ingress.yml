@@ -2,23 +2,23 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: {{ project_name }}
-  namespace: {{ kubernetes_namespace }}
+  name: {{ cookiecutter.project_name }}
+  namespace: {{ cookiecutter.kubernetes_namespace }}
   annotations:
-    kubernetes.io/ingress.class: {{ kubernetes_ingress }}
+    kubernetes.io/ingress.class: {{ cookiecutter.kubernetes_ingress }}
     kubernetes.io/tls-acme: "false"
     cert-manager.io/cluster-issuer: "letsencrypt-prod"
     nginx.ingress.kubernetes.io/proxy-body-size: "25m"
 spec:
   rules:
-    - host: {{ project_name }}.{{ kubernetes_namespace }}.resuelve.io
+    - host: {{ cookiecutter.project_name }}.{{ cookiecutter.kubernetes_namespace }}.resuelve.io
       http:
         paths:
           - path: /
             backend:
-              serviceName: {{ project_name }}
-              servicePort: {{ kubernetes_port }}
+              serviceName: {{ cookiecutter.project_name }}
+              servicePort: {{ cookiecutter.kubernetes_port }}
   tls:
-    - secretName: {{ project_name }}-acme-certificate
+    - secretName: {{ cookiecutter.project_name }}-acme-certificate
       hosts:
-        - {{ project_name }}.{{ kubernetes_namespace }}.resuelve.io
+        - {{ cookiecutter.project_name }}.{{ cookiecutter.kubernetes_namespace }}.resuelve.io

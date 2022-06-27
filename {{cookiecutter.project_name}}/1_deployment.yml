@@ -2,30 +2,30 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ project_name }}
-  namespace: {{ kubernetes_namespace }}
+  name: {{ cookiecutter.project_name }}
+  namespace: {{ cookiecutter.kubernetes_namespace }}
   annotations:
-    manifest_path: "kubernetes/{{ kubernetes_namespace }}/{{ project_name }}/1_deployment.yml"
+    manifest_path: "kubernetes/{{ cookiecutter.kubernetes_namespace }}/{{ cookiecutter.project_name }}/1_deployment.yml"
   labels:
-    app: {{ project_name }}
+    app: {{ cookiecutter.project_name }}
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: {{ project_name }}
+      app: {{ cookiecutter.project_name }}
   template:
     metadata:
       annotations:
-        ad.datadoghq.com/{{ project_name }}.logs: '[{"source": "{{ project_name }}", "service": "{{ project_name }}"}]'
+        ad.datadoghq.com/{{ cookiecutter.project_name }}.logs: '[{"source": "{{ cookiecutter.project_name }}", "service": "{{ cookiecutter.project_name }}"}]'
       labels:
-        app: {{ project_name }}
+        app: {{ cookiecutter.project_name }}
     spec:
       containers:
-        - name: {{ project_name }}
-          image: resuelve/{{ project_name }}:latest
+        - name: {{ cookiecutter.project_name }}
+          image: resuelve/{{ cookiecutter.project_name }}:latest
           ports:
-            - containerPort: {{ kubernetes_port }}
+            - containerPort: {{ cookiecutter.kubernetes_port }}
       imagePullSecrets:
         - name: docker-secrets
       nodeSelector:
-        cloud.google.com/gke-nodepool: "{{ kubernetes_nodepool }}"
+        cloud.google.com/gke-nodepool: "{{ cookiecutter.kubernetes_nodepool }}"
