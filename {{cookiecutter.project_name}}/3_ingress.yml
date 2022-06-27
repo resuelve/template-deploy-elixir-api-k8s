@@ -1,0 +1,24 @@
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: {{ project_name }}
+  namespace: {{ kubernetes_namespace }}
+  annotations:
+    kubernetes.io/ingress.class: {{ kubernetes_ingress }}
+    kubernetes.io/tls-acme: "false"
+    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    nginx.ingress.kubernetes.io/proxy-body-size: "25m"
+spec:
+  rules:
+    - host: {{ project_name }}.{{ kubernetes_namespace }}.resuelve.io
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: {{ project_name }}
+              servicePort: {{ kubernetes_port }}
+  tls:
+    - secretName: {{ project_name }}-acme-certificate
+      hosts:
+        - {{ project_name }}.{{ kubernetes_namespace }}.resuelve.io

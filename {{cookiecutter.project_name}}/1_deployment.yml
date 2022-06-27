@@ -1,0 +1,31 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ project_name }}
+  namespace: {{ kubernetes_namespace }}
+  annotations:
+    manifest_path: "kubernetes/{{ kubernetes_namespace }}/{{ project_name }}/1_deployment.yml"
+  labels:
+    app: {{ project_name }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ project_name }}
+  template:
+    metadata:
+      annotations:
+        ad.datadoghq.com/{{ project_name }}.logs: '[{"source": "{{ project_name }}", "service": "{{ project_name }}"}]'
+      labels:
+        app: {{ project_name }}
+    spec:
+      containers:
+        - name: {{ project_name }}
+          image: resuelve/{{ project_name }}:latest
+          ports:
+            - containerPort: {{ kubernetes_port }}
+      imagePullSecrets:
+        - name: docker-secrets
+      nodeSelector:
+        cloud.google.com/gke-nodepool: "{{ kubernetes_nodepool }}"
