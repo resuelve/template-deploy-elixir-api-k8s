@@ -1,10 +1,10 @@
-# sandbox template-elixir-api deployment manifests
+# {{ kubernetes_namespace }} {{ project_name }} deployment manifests
 
-[![Deploy template-elixir-api Sandbox](https://github.com/resuelve/infra-rtd/actions/workflows/deploy-template-elixir-api-sandbox.yml/badge.svg)](https://github.com/resuelve/infra-rtd/actions/workflows/deploy-template-elixir-api-sandbox.yml)
+[![Deploy {{ project_name }} Sandbox](https://github.com/resuelve/infra-rtd/actions/workflows/deploy-{{ project_name }}-{{ kubernetes_namespace }}.yml/badge.svg)](https://github.com/resuelve/infra-rtd/actions/workflows/deploy-{{ project_name }}-{{ kubernetes_namespace }}.yml)
 
 ## Introduction
 
-This component stores all the kubernetes manifests required to deploy template-elixir-api to sandbox.
+This component stores all the kubernetes manifests required to deploy {{ project_name }} to {{ kubernetes_namespace }}.
 
 ## Requirements
 
@@ -20,24 +20,20 @@ Namespace definition is at `0_namespace.yml`.
 
 ## Secrets
 
-All the application configuration are stored in a kubernetes secret called `template-elixir-api-secret`, this one is a
+All the application configuration are stored in a kubernetes secret called `{{ project_name }}-secret`, this one is a
 secret multi key which is referenced from the deployment.
 
 Secrets are created by people using a dot-env file:
 
 ```
 $ vim app.env
-PG_DB_HOST=*****
-PG_DB_PORT=*****
-PG_DB_NAME=*****
-PG_DB_SSLMODE=*****
-PG_DB_USER=*****
-PG_DB_PASSWORD=*****
+SECRET_KEY_BASE=*****
+PG_DB_URL=*****
 ```
 
 **IMPORTANT:** Replace `*****` with correct values.
 
-**IMPORTANT:** Be sure not to leave blank characters at the begining or the end of lines.
+**IMPORTANT:** Be sure not to leave blank characters at the beginning or the end of lines.
 
 Then you need to convert it to base64 format:
 
@@ -69,9 +65,9 @@ Ingress definition is at `3_ingress.yml`.
 ## Workflow
 
 To automate the creation and update of kubernetes resources we have included a github action workflow called:
-`.github/workflows/deploy-template-elixir-api-sandbox.yml`.
+`.github/workflows/deploy-{{ project_name }}-{{ kubernetes_namespace }}.yml`.
 
-## Recomendations
+## Recommendations
 
 For quality deployments always:
 
