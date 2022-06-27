@@ -1,10 +1,10 @@
-# {{ kubernetes_namespace }} {{ project_name }} deployment manifests
+# {{ cookiecutter.kubernetes_namespace }} {{ cookiecutter.project_name }} deployment manifests
 
-[![Deploy {{ project_name }} Sandbox](https://github.com/resuelve/infra-rtd/actions/workflows/deploy-{{ project_name }}-{{ kubernetes_namespace }}.yml/badge.svg)](https://github.com/resuelve/infra-rtd/actions/workflows/deploy-{{ project_name }}-{{ kubernetes_namespace }}.yml)
+[![Deploy {{ cookiecutter.project_name }} Sandbox](https://github.com/resuelve/infra-rtd/actions/workflows/deploy-{{ cookiecutter.project_name }}-{{ cookiecutter.kubernetes_namespace }}.yml/badge.svg)](https://github.com/resuelve/infra-rtd/actions/workflows/deploy-{{ cookiecutter.project_name }}-{{ cookiecutter.kubernetes_namespace }}.yml)
 
 ## Introduction
 
-This component stores all the kubernetes manifests required to deploy {{ project_name }} to {{ kubernetes_namespace }}.
+This component stores all the kubernetes manifests required to deploy {{ cookiecutter.project_name }} to {{ cookiecutter.kubernetes_namespace }}.
 
 ## Requirements
 
@@ -20,7 +20,7 @@ Namespace definition is at `0_namespace.yml`.
 
 ## Secrets
 
-All the application configuration are stored in a kubernetes secret called `{{ project_name }}-secret`, this one is a
+All the application configuration are stored in a kubernetes secret called `{{ cookiecutter.project_name }}-secret`, this one is a
 secret multi key which is referenced from the deployment.
 
 Secrets are created by people using a dot-env file:
@@ -65,7 +65,7 @@ Ingress definition is at `3_ingress.yml`.
 ## Workflow
 
 To automate the creation and update of kubernetes resources we have included a github action workflow called:
-`.github/workflows/deploy-{{ project_name }}-{{ kubernetes_namespace }}.yml`.
+`.github/workflows/deploy-{{ cookiecutter.project_name }}-{{ cookiecutter.kubernetes_namespace }}.yml`.
 
 ## Recommendations
 
