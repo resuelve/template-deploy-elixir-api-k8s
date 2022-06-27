@@ -2,5 +2,6 @@
   "project_name": "example-api",
   "kubernetes_namespace": "sandbox",
   "kubernetes_port": "4000",
+  "kubernetes_ingress": "nginx-hardened",
   "kubernetes_nodepool": "sandbox-rtd"
 }
