@@ -1,0 +1,23 @@
+name: CI
+
+on:
+  pull_request:
+    branches: main
+
+env:
+  ENV: test
+
+jobs:
+  build-and-test:
+    name: Build and test
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+      run: sudo apt install -y cookicutter
+      - uses: actions/checkout@v2
+      - name: Install cookiecutter 
+        run: |
+          pip install cookiecutter
+      - name: Test cookiecutter
+        run: |
+          cookiecutter . --no-input
