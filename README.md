@@ -1,13 +1,16 @@
 # template-deploy-elixir-api-k8s
 
-Template with kubernetes manifests for elixir api deployments.
+This project helps Elixir developers to create all the infrastructure boilerplate that every Elixir API needs
+at the beginning of the development process.
+
+It creates kubernetes manifests for `namespaces`, `deployments`, `services` and `ingress` resources.
 
 ## Install
 
-You need to install `cookiecutter` on your local:
+You need to install `cookiecutter` on your local with another testing tools:
 
 ```shell
-$ brew install cookiecutter
+$ brew install cookiecutter yamllint kubernetes-validate
 ```
 
 ## Usage
@@ -62,3 +65,10 @@ $ gpsup
 ### Contributions
 
 I you find this useful please buy me a cofee :P, I'm just kidding, just try to use it and give feedback.
+
+### References
+
+Please read the follow references for more details:
+
+ * [Cookicutter home](https://github.com/cookiecutter/cookiecutter)
+ * [Cookicutter documentation](https://cookiecutter.readthedocs.io/en/stable/)
