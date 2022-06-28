@@ -20,3 +20,4 @@ jobs:
       - name: Test cookiecutter
         run: |
           cookiecutter . --no-input
+          ls
