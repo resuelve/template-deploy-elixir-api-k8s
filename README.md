@@ -1,5 +1,7 @@
 # template-deploy-elixir-api-k8s
 
+[![CI](https://github.com/resuelve/template-deploy-elixir-api-k8s/actions/workflows/ci.yml/badge.svg)](https://github.com/resuelve/template-deploy-elixir-api-k8s/actions/workflows/ci.yml)
+
 This project helps Elixir developers to create all the infrastructure boilerplate that every Elixir API needs
 at the beginning of the development process.
 
