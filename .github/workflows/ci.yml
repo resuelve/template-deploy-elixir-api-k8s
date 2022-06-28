@@ -7,7 +7,7 @@ on:
 
 env:
   ENV: test
-  K8S_VERSION: 1.23
+  K8S_VERSION: 1.18
 
 jobs:
   build-and-test:
