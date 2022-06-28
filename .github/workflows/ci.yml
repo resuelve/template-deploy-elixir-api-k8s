@@ -7,6 +7,7 @@ on:
 
 env:
   ENV: test
+  K8S_VERSION: 1.18
 
 jobs:
   build-and-test:
@@ -39,7 +40,7 @@ jobs:
           echo "$HOME/.local/bin" >> $GITHUB_PATH
       - name: Lint namespace manifest
         run: |
-          kubernetes-validate example-api/0_namespace.yml
-          kubernetes-validate example-api/1_deployment.yml
-          kubernetes-validate example-api/2_service.yml
-          kubernetes-validate example-api/3_ingress.yml
+          kubernetes-validate -k ${{ env.K8S_VERSION }} --strict example-api/0_namespace.yml
+          kubernetes-validate -k ${{ env.K8S_VERSION }} --strict example-api/1_deployment.yml
+          kubernetes-validate -k ${{ env.K8S_VERSION }} --strict example-api/2_service.yml
+          kubernetes-validate -k ${{ env.K8S_VERSION }} --strict example-api/3_ingress.yml
