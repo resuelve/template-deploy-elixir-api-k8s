@@ -9,7 +9,7 @@ metadata:
   labels:
     app: {{ cookiecutter.project_name }}
 spec:
-  replicas: {{ cookicutter.kubernetes_replicas }}
+  replicas: {{ cookiecutter.kubernetes_replicas }}
   selector:
     matchLabels:
       app: {{ cookiecutter.project_name }}
