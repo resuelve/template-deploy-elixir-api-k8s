@@ -7,7 +7,7 @@ on:
 
 env:
   ENV: test
-  K8S_VERSION: 1.18
+  K8S_VERSION: 1.23
 
 jobs:
   build-and-test:
@@ -38,7 +38,7 @@ jobs:
       - name: Set GITHUB PATH
         run: |
           echo "$HOME/.local/bin" >> $GITHUB_PATH
-      - name: Lint namespace manifest
+      - name: Validate manifest against kubernetes version
         run: |
           kubernetes-validate -k ${{ env.K8S_VERSION }} --strict example-api/0_namespace.yml
           kubernetes-validate -k ${{ env.K8S_VERSION }} --strict example-api/1_deployment.yml
