@@ -5,20 +5,20 @@ metadata:
   name: {{ cookiecutter.project_name }}
   namespace: {{ cookiecutter.kubernetes_namespace }}
   annotations:
-    kubernetes.io/ingress.class: {{ cookiecutter.kubernetes_ingress }}
-    kubernetes.io/tls-acme: "false"
-    cert-manager.io/cluster-issuer: "letsencrypt-prod"
-    nginx.ingress.kubernetes.io/proxy-body-size: "25m"
+    kubernetes.io/ingress.class: {{ cookiecutter.kubernetes_ingress_class }}
+    kubernetes.io/tls-acme: "{{ cookiecutter.kubernetes_ingress_tls_acme }}"
+    cert-manager.io/cluster-issuer: "{{ cookiecutter.kubernetes_ingress_cluster_issuer }}"
+    nginx.ingress.kubernetes.io/proxy-body-size: "{{ cookiecutter.kubernetes_ingress_body_size }}"
 spec:
   rules:
-    - host: {{ cookiecutter.project_name }}.{{ cookiecutter.kubernetes_namespace }}.resuelve.io
+    - host: {{ cookiecutter.kubernetes_endpoint_domain }}
       http:
         paths:
-          - path: /
+          - path: {{ cookiecutter.kubernetes_endpoint_path }}
             backend:
               serviceName: {{ cookiecutter.project_name }}
               servicePort: {{ cookiecutter.kubernetes_port }}
   tls:
     - secretName: {{ cookiecutter.project_name }}-acme-certificate
       hosts:
-        - {{ cookiecutter.project_name }}.{{ cookiecutter.kubernetes_namespace }}.resuelve.io
+        - {{ cookiecutter.kubernetes_endpoint_domain }}

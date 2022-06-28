@@ -9,6 +9,6 @@ spec:
     app: {{ cookiecutter.project_name }}
   ports:
     - name: {{ cookiecutter.project_name }}
-      protocol: TCP
+      protocol: {{ cookiecutter.kubernetes_protocol }}
       port: {{ cookiecutter.kubernetes_port }}
       targetPort: {{ cookiecutter.kubernetes_port }}

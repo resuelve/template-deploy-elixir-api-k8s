@@ -9,7 +9,7 @@ metadata:
   labels:
     app: {{ cookiecutter.project_name }}
 spec:
-  replicas: 1
+  replicas: {{ cookicutter.kubernetes_replicas }}
   selector:
     matchLabels:
       app: {{ cookiecutter.project_name }}
@@ -22,9 +22,20 @@ spec:
     spec:
       containers:
         - name: {{ cookiecutter.project_name }}
-          image: resuelve/{{ cookiecutter.project_name }}:latest
+          image: {{ cookiecutter.org_name }}/{{ cookiecutter.project_name }}:latest
+          imagePullPolicy: Always
           ports:
-            - containerPort: {{ cookiecutter.kubernetes_port }}
+            - name: http
+              containerPort: {{ cookiecutter.kubernetes_port }}
+              protocol: {{ cookiecutter.kubernetes_protocol }}
+          livenessProbe:
+            httpGet:
+              path: {{cookiecutter.kubernetes_endpoint_path }}
+              port: {{cookiecutter.kubernetes_port }}
+          readinessProbe:
+            httpGet:
+              path: {{cookiecutter.kubernetes_endpoint_path }}
+              port: {{cookiecutter.kubernetes_port }}
       imagePullSecrets:
         - name: docker-secrets
       nodeSelector:
