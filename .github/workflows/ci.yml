@@ -39,7 +39,7 @@ jobs:
           echo "$HOME/.local/bin" >> $GITHUB_PATH
       - name: Lint namespace manifest
         run: |
-          kubernetes-validate 0_namespace.yml
-          kubernetes-validate 1_deployment.yml
-          kubernetes-validate 2_service.yml
-          kubernetes-validate 3_ingress.yml
+          kubernetes-validate example-api/0_namespace.yml
+          kubernetes-validate example-api/1_deployment.yml
+          kubernetes-validate example-api/2_service.yml
+          kubernetes-validate example-api/3_ingress.yml
