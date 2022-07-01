@@ -15,8 +15,6 @@ spec:
       app: {{ cookiecutter.project_name }}
   template:
     metadata:
-      annotations:
-        ad.datadoghq.com/{{ cookiecutter.project_name }}.logs: '[{"source": "{{ cookiecutter.project_name }}", "service": "{{ cookiecutter.project_name }}"}]'
       labels:
         app: {{ cookiecutter.project_name }}
     spec:
@@ -30,12 +28,19 @@ spec:
               protocol: {{ cookiecutter.kubernetes_protocol }}
           livenessProbe:
             httpGet:
-              path: {{cookiecutter.kubernetes_endpoint_path }}
-              port: {{cookiecutter.kubernetes_port }}
+              path: {{ cookiecutter.kubernetes_endpoint_path }}
+              port: {{ cookiecutter.kubernetes_port }}
           readinessProbe:
             httpGet:
-              path: {{cookiecutter.kubernetes_endpoint_path }}
-              port: {{cookiecutter.kubernetes_port }}
+              path: {{ cookiecutter.kubernetes_endpoint_path }}
+              port: {{ cookiecutter.kubernetes_port }}
+          resources:
+            limits:
+              cpu: {{ cookiecutter.max_cpu }}
+              memory: {{ cookiecutter.max_mem }}
+            requests:
+              cpu: {{ cookiecutter.min_cpu }}
+              memory: {{ cookiecutter.min_mem }}
       imagePullSecrets:
         - name: docker-secrets
       nodeSelector:
