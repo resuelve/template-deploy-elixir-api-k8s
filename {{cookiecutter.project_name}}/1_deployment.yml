@@ -22,6 +22,9 @@ spec:
         - name: {{ cookiecutter.project_name }}
           image: {{ cookiecutter.org_name }}/{{ cookiecutter.project_name }}:latest
           imagePullPolicy: Always
+          envFrom:
+            - secretRef:
+                name: {{ cookiecutter.project_name }}-secret
           ports:
             - name: http
               containerPort: {{ cookiecutter.kubernetes_port }}
