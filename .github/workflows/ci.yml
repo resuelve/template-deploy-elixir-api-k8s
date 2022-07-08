@@ -40,7 +40,6 @@ jobs:
           echo "$HOME/.local/bin" >> $GITHUB_PATH
       - name: Validate manifest against kubernetes version
         run: |
-          kubernetes-validate -k ${{ env.K8S_VERSION }} --strict example-api/0_namespace.yml
           kubernetes-validate -k ${{ env.K8S_VERSION }} --strict example-api/1_deployment.yml
           kubernetes-validate -k ${{ env.K8S_VERSION }} --strict example-api/2_service.yml
           kubernetes-validate -k ${{ env.K8S_VERSION }} --strict example-api/3_ingress.yml
