@@ -19,5 +19,6 @@
   "kubernetes_ingress_body_size": "25m",
   "kubernetes_endpoint_domain": "sandbox.resuelve.io",
   "kubernetes_endpoint_path": "/",
+  "kubernetes_endpoint_path_healthcheck": "/doc",
   "git_configs_repo": "ssh://ingeniero@resuelve.io@source.developers.google.com:2022/p/resonant-hawk-169822/r/resuelve-cloud-configs"
 }
