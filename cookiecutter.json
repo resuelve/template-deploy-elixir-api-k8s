@@ -1,6 +1,9 @@
 {
   "org_name": "resuelve",
   "project_name": "example-api",
+  "project_env": "sandbox",
+  "project_team": "roboporks",
+  "project_owner": "carlos-vargas",
   "kubernetes_namespace": "sandbox",
   "kubernetes_replicas": "1",
   "kubernetes_protocol": "TCP",
@@ -10,7 +13,7 @@
   "min_cpu": "100m",
   "min_mem": "128Mi",
   "kubernetes_nodepool": "sandbox-rtd",
-  "kubernetes_ingress_class": "nginx-hardened",
+  "kubernetes_ingress_class": "kong",
   "kubernetes_ingress_tls_acme": "false",
   "kubernetes_ingress_cluster_issuer": "letsencrypt-prod",
   "kubernetes_ingress_body_size": "25m",
