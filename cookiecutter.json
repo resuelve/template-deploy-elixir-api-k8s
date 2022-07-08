@@ -4,7 +4,7 @@
   "project_env": "sandbox",
   "project_team": "roboporks",
   "project_owner": "carlos-vargas",
-  "kubernetes_namespace": "sandbox",
+  "kubernetes_namespace": "sancus",
   "kubernetes_replicas": "1",
   "kubernetes_protocol": "TCP",
   "kubernetes_port": "4000",
