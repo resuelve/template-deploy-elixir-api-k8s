@@ -31,11 +31,11 @@ spec:
               protocol: {{ cookiecutter.kubernetes_protocol }}
           livenessProbe:
             httpGet:
-              path: {{ cookiecutter.kubernetes_endpoint_path }}
+              path: {{ cookiecutter.kubernetes_endpoint_path_healthcheck }}
               port: {{ cookiecutter.kubernetes_port }}
           readinessProbe:
             httpGet:
-              path: {{ cookiecutter.kubernetes_endpoint_path }}
+              path: {{ cookiecutter.kubernetes_endpoint_path_healthcheck }}
               port: {{ cookiecutter.kubernetes_port }}
           resources:
             limits:
