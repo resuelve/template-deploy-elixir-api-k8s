@@ -3,22 +3,21 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: {{ cookiecutter.project_name }}
-  namespace: {{ cookiecutter.kubernetes_namespace }}
+  namespace: {{ cookiecutter.k8s_namespace }}
   annotations:
-    kubernetes.io/ingress.class: {{ cookiecutter.kubernetes_ingress_class }}
-    kubernetes.io/tls-acme: "{{ cookiecutter.kubernetes_ingress_tls_acme }}"
-    cert-manager.io/cluster-issuer: "{{ cookiecutter.kubernetes_ingress_cluster_issuer }}"
-    nginx.ingress.kubernetes.io/proxy-body-size: "{{ cookiecutter.kubernetes_ingress_body_size }}"
+    kubernetes.io/ingress.class: {{ cookiecutter.k8s_ingress_class }}
+    kubernetes.io/tls-acme: "{{ cookiecutter.k8s_ingress_tls_acme }}"
+    cert-manager.io/cluster-issuer: "{{ cookiecutter.k8s_ingress_cluster_issuer }}"
 spec:
   rules:
-    - host: {{ cookiecutter.kubernetes_endpoint_domain }}
+    - host: {{ cookiecutter.k8s_ingress_endpoint_domain }}
       http:
         paths:
-          - path: {{ cookiecutter.kubernetes_endpoint_path }}
+          - path: {{ cookiecutter.k8s_ingress_endpoint_path }}
             backend:
               serviceName: {{ cookiecutter.project_name }}
-              servicePort: {{ cookiecutter.kubernetes_port }}
+              servicePort: {{ cookiecutter.k8s_svc_port }}
   tls:
     - secretName: {{ cookiecutter.project_name }}-acme-certificate
       hosts:
-        - {{ cookiecutter.kubernetes_endpoint_domain }}
+        - {{ cookiecutter.k8s_ingress_endpoint_domain }}

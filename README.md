@@ -5,13 +5,13 @@
 This project helps Elixir developers to create all the infrastructure boilerplate that every Elixir API needs
 at the beginning of the development process.
 
-It creates kubernetes manifests for `namespaces`, `deployments`, `services` and `ingress` resources.
+It creates kubernetes manifests for `deployments`, `services` and `ingress` resources.
 
 ## Install
 
 You need to install `cookiecutter` on your local with another testing tools:
 
-```shell
+``` shell
 $ brew install cookiecutter yamllint kubernetes-validate
 ```
 
@@ -19,19 +19,18 @@ $ brew install cookiecutter yamllint kubernetes-validate
 
 Generate a template:
 
-```shell
+``` shell
 $ cookiecutter git@github.com:resuelve/template-deploy-elixir-api-k8s.git
 ```
 
 This command will ask you for your project attributes, and after that
 creates a directory with your project's name, for example:
 
-```shell
+``` shell
 $ find example-api
 example-api
 example-api/2_service.yml
 example-api/3_ingress.yml
-example-api/0_namespace.yml
 example-api/README.md
 example-api/1_deployment.yml
 ```
@@ -41,7 +40,7 @@ example-api/1_deployment.yml
 If you need to create the kubernetes manifests for a project that its manifests are hosted in the repo
 `resuelve/infra-rtd` you can use something like this:
 
-```shell
+``` shell
 $ git clone git@github.com:resuelve/infra-rtd.git
 $ cd infra-rtd/kubernetes/sandbox
 $ gcb foo.lanito/example_api_sandbox
@@ -55,7 +54,7 @@ $ gpsup
 If you need to create the kubernetes manifests for a project that its manifests are hosted in the repo
 `resuelve-cloud-configs` you can use something like this:
 
-```shell
+``` shell
 $ git clone ssh://foo.lanito@resuelve.io@source.developers.google.com:2022/p/resonant-hawk-169822/r/resuelve-cloud-configs
 $ cd resuelve-cloud-configs/sandbox
 $ gcb foo.lanito/example_api_sandbox
@@ -72,5 +71,5 @@ I you find this useful please buy me a cofee :P, I'm just kidding, just try to u
 
 Please read the follow references for more details:
 
- * [Cookicutter home](https://github.com/cookiecutter/cookiecutter)
- * [Cookicutter documentation](https://cookiecutter.readthedocs.io/en/stable/)
+* [Cookicutter home](https://github.com/cookiecutter/cookiecutter)
+* [Cookicutter documentation](https://cookiecutter.readthedocs.io/en/stable/)

@@ -3,12 +3,12 @@ apiVersion: v1
 kind: Service
 metadata:
   name: {{ cookiecutter.project_name }}
-  namespace: {{ cookiecutter.kubernetes_namespace }}
+  namespace: {{ cookiecutter.k8s_namespace }}
 spec:
   selector:
     app: {{ cookiecutter.project_name }}
   ports:
     - name: {{ cookiecutter.project_name }}
-      protocol: {{ cookiecutter.kubernetes_protocol }}
-      port: {{ cookiecutter.kubernetes_port }}
-      targetPort: {{ cookiecutter.kubernetes_port }}
+      protocol: {{ cookiecutter.k8s_svc_protocol }}
+      port: {{ cookiecutter.k8s_svc_port }}
+      targetPort: {{ cookiecutter.k8s_svc_port }}

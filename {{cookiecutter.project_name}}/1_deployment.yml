@@ -3,13 +3,13 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: {{ cookiecutter.project_name }}
-  namespace: {{ cookiecutter.kubernetes_namespace }}
+  namespace: {{ cookiecutter.k8s_namespace }}
   annotations:
-    manifest_path: "kubernetes/{{ cookiecutter.kubernetes_namespace }}/{{ cookiecutter.project_name }}/1_deployment.yml"
+    manifest_path: "kubernetes/{{ cookiecutter.k8s_namespace }}/{{ cookiecutter.project_name }}/1_deployment.yml"
   labels:
     app: {{ cookiecutter.project_name }}
 spec:
-  replicas: {{ cookiecutter.kubernetes_replicas }}
+  replicas: {{ cookiecutter.k8s_deploy_replicas }}
   selector:
     matchLabels:
       app: {{ cookiecutter.project_name }}
@@ -27,24 +27,24 @@ spec:
                 name: {{ cookiecutter.project_name }}-secret
           ports:
             - name: http
-              containerPort: {{ cookiecutter.kubernetes_port }}
-              protocol: {{ cookiecutter.kubernetes_protocol }}
+              containerPort: {{ cookiecutter.k8s_svc_port }}
+              protocol: {{ cookiecutter.k8s_svc_protocol }}
           livenessProbe:
             httpGet:
-              path: {{ cookiecutter.kubernetes_endpoint_path_healthcheck }}
-              port: {{ cookiecutter.kubernetes_port }}
+              path: {{ cookiecutter.k8s_k8s_deploy_health_path }}
+              port: {{ cookiecutter.k8s_svc_port }}
           readinessProbe:
             httpGet:
-              path: {{ cookiecutter.kubernetes_endpoint_path_healthcheck }}
-              port: {{ cookiecutter.kubernetes_port }}
+              path: {{ cookiecutter.k8s_deploy_health_path }}
+              port: {{ cookiecutter.k8s_svc_port }}
           resources:
             limits:
-              cpu: {{ cookiecutter.max_cpu }}
-              memory: {{ cookiecutter.max_mem }}
+              cpu: {{ cookiecutter.k8s_deploy_max_cpu }}
+              memory: {{ cookiecutter.k8s_deploy_max_mem }}
             requests:
-              cpu: {{ cookiecutter.min_cpu }}
-              memory: {{ cookiecutter.min_mem }}
+              cpu: {{ cookiecutter.k8s_deploy_min_cpu }}
+              memory: {{ cookiecutter.k8s_deploy_min_mem }}
       imagePullSecrets:
         - name: docker-secrets
       nodeSelector:
-        cloud.google.com/gke-nodepool: "{{ cookiecutter.kubernetes_nodepool }}"
+        cloud.google.com/gke-nodepool: "{{ cookiecutter.k8s_deploy_nodepool }}"

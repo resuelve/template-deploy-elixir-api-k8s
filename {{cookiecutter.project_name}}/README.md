@@ -25,4 +25,4 @@ Ingress definition is at `3_ingress.yml`.
 
 For quality deployments always:
 
- * Remember to validate your manifests before commit.
+* Remember to validate your manifests before commit.
