@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
         - name: {{ cookiecutter.project_name }}
-          image: {{ cookiecutter.org_name }}/{{ cookiecutter.project_name }}:latest
+          image: {{ cookiecutter.org_name }}/{{ cookiecutter.project_name }}:{{ cookiecutter.k8s_deploy_image_version }}
           imagePullPolicy: Always
           envFrom:
             - secretRef:

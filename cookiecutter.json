@@ -5,6 +5,7 @@
   "project_team": "roboporks",
   "project_owner": "carlos-vargas",
   "k8s_namespace": "sancus",
+  "k8s_deploy_image_version": "2a2f925",
   "k8s_deploy_replicas": "1",
   "k8s_deploy_max_cpu": "512m",
   "k8s_deploy_max_mem": "256Mi",
