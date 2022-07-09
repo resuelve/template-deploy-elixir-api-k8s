@@ -1,9 +1,9 @@
-# {{ cookiecutter.kubernetes_namespace }} {{ cookiecutter.project_name }} deployment manifests
+# {{ cookiecutter.k8s_namespace }} {{ cookiecutter.project_name }} deployment manifests
 
 ## Introduction
 
-This component stores all the kubernetes resources manifests required to deploy
-{{ cookiecutter.project_name }} to {{ cookiecutter.kubernetes_namespace }}.
+This component stores all the k8s resources manifests required to deploy
+{{ cookiecutter.project_name }} to {{ cookiecutter.k8s_namespace }}.
 
 ## Requirements
 
