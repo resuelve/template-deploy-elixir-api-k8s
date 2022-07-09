@@ -31,7 +31,7 @@ spec:
               protocol: {{ cookiecutter.k8s_svc_protocol }}
           livenessProbe:
             httpGet:
-              path: {{ cookiecutter.k8s_k8s_deploy_health_path }}
+              path: {{ cookiecutter.k8s_deploy_health_path }}
               port: {{ cookiecutter.k8s_svc_port }}
           readinessProbe:
             httpGet:
