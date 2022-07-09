@@ -3,7 +3,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: {{ cookiecutter.project_name }}-{{ cookiecutter.project_env }}
-  namespace: {{ cookiecutter.kubernetes_namespace }}
+  namespace: {{ cookiecutter.k8s_namespace }}
   labels:
     project: {{ cookiecutter.project_name }}
     environment: {{ cookiecutter.project_env }}
@@ -11,10 +11,10 @@ metadata:
     product-owner: {{ cookiecutter.project_owner }}
 spec:
   destination:
-    namespace: {{ cookiecutter.kubernetes_namespace }}
+    namespace: {{ cookiecutter.k8s_namespace }}
     server: https://kubernetes.default.svc
   project: {{ cookiecutter.project_team }}-project
   source:
-    path: {{ cookiecutter.kubernetes_namespace }}/{{ cookiecutter.project_name }}
+    path: {{ cookiecutter.k8s_namespace }}/{{ cookiecutter.project_name }}
     repoURL: {{ cookiecutter.git_configs_repo }}
     targetRevision: HEAD
