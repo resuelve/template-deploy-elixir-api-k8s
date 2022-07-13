@@ -1,8 +1,8 @@
 {
   "project_name": "example-api",
   "project_env": "sandbox",
-  "project_team": "roboporks",
-  "project_owner": "carlos-vargas",
+  "project_team": "octopods",
+  "project_owner": "jyr-gaxiola",
   "k8s_namespace": "sancus",
   "git_configs_repo": "ssh://ingeniero@resuelve.io@source.developers.google.com:2022/p/resonant-hawk-169822/r/resuelve-cloud-configs"
 }
