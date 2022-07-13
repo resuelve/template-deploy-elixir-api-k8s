@@ -3,7 +3,7 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: {{ cookiecutter.project_name }}-{{ cookiecutter.project_env }}
-  namespace: {{ cookiecutter.k8s_namespace }}
+  namespace: argocd
   labels:
     project: {{ cookiecutter.project_name }}
     environment: {{ cookiecutter.project_env }}
