@@ -15,6 +15,6 @@ spec:
     server: https://kubernetes.default.svc
   project: {{ cookiecutter.project_team }}-project
   source:
-    path: {{ cookiecutter.k8s_namespace }}/{{ cookiecutter.project_name }}
+    path: {{ cookiecutter.project_env }}/{{ cookiecutter.project_name }}
     repoURL: {{ cookiecutter.git_configs_repo }}
     targetRevision: HEAD
