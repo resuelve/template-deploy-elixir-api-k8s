@@ -9,6 +9,7 @@ metadata:
     environment: {{ cookiecutter.project_env }}
     team: {{ cookiecutter.project_team }}
     product-owner: {{ cookiecutter.project_owner }}
+    release: {{ cookiecutter.project_release }}
 spec:
   destination:
     namespace: {{ cookiecutter.k8s_namespace }}
