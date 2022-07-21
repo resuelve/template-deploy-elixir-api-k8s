@@ -12,7 +12,14 @@ It creates kubernetes manifests for `deployments`, `services` and `ingress` reso
 You need to install `cookiecutter` on your local with another testing tools:
 
 ``` shell
-$ brew install cookiecutter yamllint kubernetes-validate
+$ brew install cookiecutter
+```
+
+Additional you can use `yamllint` to validate that the generated manifests are valid, also use `kubernetes-validate`
+to validate against kubernetes api support:
+
+``` shell
+$ brew install yamllint kubernetes-validate
 ```
 
 ## Usage
@@ -44,7 +51,7 @@ If you need to create the kubernetes manifests for a project that its manifests 
 $ git clone git@github.com:resuelve/infra-rtd.git
 $ cd infra-rtd/kubernetes/sandbox
 $ gcb foo.lanito/example_api_sandbox
-$ cookiecutter git@github.com:resuelve/template-deploy-elixir-api-k8s.git
+$ cookiecutter git@github.com:resuelve/template-deploy-elixir-api-k8s.git --directory=kubernetes
 $ gcmsg "New deployment manifests to example-api in sandbox cluster." -a
 $ gpsup
 ```
@@ -58,14 +65,31 @@ If you need to create the kubernetes manifests for a project that its manifests 
 $ git clone ssh://foo.lanito@resuelve.io@source.developers.google.com:2022/p/resonant-hawk-169822/r/resuelve-cloud-configs
 $ cd resuelve-cloud-configs/sandbox
 $ gcb foo.lanito/example_api_sandbox
-$ cookiecutter git@github.com:resuelve/template-deploy-elixir-api-k8s.git
+$ cookiecutter git@github.com:resuelve/template-deploy-elixir-api-k8s.git --directory=kubernetes
+$ gcmsg "New deployment manifests to example-api in sandbox cluster." -a
+$ gpsup
+```
+
+### Usage for CD workflows
+
+To generate kubernetes manifests for a project that its manifests are hosted in the repo
+`resuelve-cloud-configs` and you want to automate the process in a github actions workflow, use something like this:
+
+``` shell
+$ git clone ssh://foo.lanito@resuelve.io@source.developers.google.com:2022/p/resonant-hawk-169822/r/resuelve-cloud-configs
+$ cd resuelve-cloud-configs/sandbox
+$ gcb foo.lanito/example_api_sandbox
+$ cookiecutter git@github.com/resuelve/template-deploy-elixir-api-k8s.git --no-input \
+  --directory=kubernetes \
+  project_name=example-api \
+  k8s_deploy_image_version=git-hash \
 $ gcmsg "New deployment manifests to example-api in sandbox cluster." -a
 $ gpsup
 ```
 
 ### Contributions
 
-I you find this useful please buy me a cofee :P, I'm just kidding, just try to use it and give feedback.
+I you find this useful please buy me a coffee :P, I'm just kidding, just try to use it and give feedback.
 
 ### References
 
