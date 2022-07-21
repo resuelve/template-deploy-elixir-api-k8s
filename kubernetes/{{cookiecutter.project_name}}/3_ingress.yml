@@ -6,6 +6,7 @@ metadata:
   namespace: {{ cookiecutter.k8s_namespace }}
   annotations:
     kubernetes.io/ingress.class: {{ cookiecutter.k8s_ingress_class }}
+    konghq.com/strip-path: "true"
     kubernetes.io/tls-acme: "{{ cookiecutter.k8s_ingress_tls_acme }}"
     cert-manager.io/cluster-issuer: "{{ cookiecutter.k8s_ingress_cluster_issuer }}"
 spec:
